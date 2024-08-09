@@ -3,12 +3,12 @@
 # files
 /src/components/test.css
 /src/components/welcom.jsx
-/src/components/counter.jsx
 
 # dependencies
 /node_modules
 /.pnp
 .pnp.js
+.gitignore
 
 # testing
 /coverage
