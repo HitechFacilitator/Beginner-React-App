@@ -7,7 +7,6 @@ class Counter extends React.Component{ /* creating a component */
         super(props) /* calling the parent constructor (parent = React.Component) */
         this.state = {
             count: 0, /* Declaring our count varaible */
-            arr: ['one','two','three',4] /* Declaring our array */
         }
     };
 
@@ -16,7 +15,8 @@ class Counter extends React.Component{ /* creating a component */
         this.setState((prevState) => ({
             count: prevState.count+1,
         }));
-
+        // The body of this function could still be
+        // this.setState({ count: this.state.count + 1})
     }
     //function to determine which value of the count state will be display
     content(){
@@ -39,18 +39,12 @@ class Counter extends React.Component{ /* creating a component */
     render(){
         // initialising the style function in the render function
         const style = this.style()
-        // declaring a varaible to serve as the key(index) of our array's elts
-        let i = -1
 
         return(
             <div>
                 <br />
                 <span style={style} className="m-4"> {this.content()} </span>
                 <button onClick={()=>this.handleAddClick()} className="btn btn-bg btn-secondary"> Increment </button> 
-                <ul>
-                    {/* display the content of the array in an unordered list */}
-                    {this.state.arr.map(value => <li key={++i}> {value} </li>)}
-                </ul>
             </div>
         )
     }
