@@ -6,7 +6,7 @@ class Counter extends React.Component{ /* creating a component */
     constructor(props){
         super(props) /* calling the parent constructor (parent = React.Component) */
         this.state = {
-            count: 0, /* Declaring our count varaible */
+            count: this.props.value //initializy the count dynamicaly by using the vallue attribute passed in the countersCmponent file
         }
     };
 
@@ -43,6 +43,7 @@ class Counter extends React.Component{ /* creating a component */
         return(
             <div>
                 <br />
+                {this.props.children} {/* Executing the child attribute(special props) passed in the countersCmponent file */}
                 <span style={style} className="m-4"> {this.content()} </span>
                 <button onClick={()=>this.handleAddClick()} className="btn btn-bg btn-secondary"> Increment </button> 
             </div>
