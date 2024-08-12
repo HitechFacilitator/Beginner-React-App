@@ -6,7 +6,7 @@ class Counter extends React.Component{ /* creating a component */
     constructor(props){
         super(props) /* calling the parent constructor (parent = React.Component) */
         this.state = {
-            count: this.props.value //initializy the count dynamicaly by using the vallue attribute passed in the countersCmponent file
+            count: this.props.counter.value //initializy the count dynamicaly by using the vallue attribute passed in the countersCmponent file
         }
     };
 
@@ -43,9 +43,10 @@ class Counter extends React.Component{ /* creating a component */
         return(
             <div>
                 <br />
-                {this.props.children} {/* Executing the child attribute(special props) passed in the countersCmponent file */}
                 <span style={style} className="m-4"> {this.content()} </span>
-                <button onClick={()=>this.handleAddClick()} className="btn btn-bg btn-secondary"> Increment </button> 
+                <button onClick={()=>this.handleAddClick()} className="btn btn-bg btn-secondary"> Increment </button>
+                {/* Delete button emit the onDelete event when clicked and passing him the id of the concern component */}
+                <button onClick={()=>this.props.onDelete(this.props.counter.id)} className="btn btn-danger btn-bg m-2"> Delete </button>
             </div>
         )
     }
