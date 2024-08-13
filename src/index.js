@@ -1,10 +1,10 @@
 import React, { StrictMode } from 'react';
 import ReactDOM from 'react-dom/client';
-import Counters from './components/countersComponent'
+import App from './App'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <StrictMode>
-    <Counters />
+    <App />
   </StrictMode>
 );
