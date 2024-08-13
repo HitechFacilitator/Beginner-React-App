@@ -1,26 +1,14 @@
+// This component is know a " Controlled Component " i.e a component with no state who data is been provide by
+// the parent and if it data need to be modified, he raise an event and the parent handle it
+
 import React from 'react';
 // import ReactDOM from 'react-dom';
 import 'bootstrap/dist/css/bootstrap.css' /* importing bootstrap into our project */
 
 class Counter extends React.Component{ /* creating a component */
-    constructor(props){
-        super(props) /* calling the parent constructor (parent = React.Component) */
-        this.state = {
-            count: this.props.counter.value //initializy the count dynamicaly by using the vallue attribute passed in the countersCmponent file
-        }
-    };
-
-    // function to increment the count varaible or state
-    handleAddClick(){
-        this.setState((prevState) => ({
-            count: prevState.count+1,
-        }));
-        // The body of this function could still be
-        // this.setState({ count: this.state.count + 1})
-    }
     //function to determine which value of the count state will be display
     content(){
-        return this.state.count === 0 ? " Zero " : this.state.count;
+        return this.props.counter.value === 0 ? " Zero " : this.props.counter.value;
     }
 
     // function to determine how the count state will be display
@@ -29,7 +17,7 @@ class Counter extends React.Component{ /* creating a component */
             fontSize: 20,
             fontWeight: 'bold',
             //display count background yellow if it count is zero else display background blue
-            backgroundColor: this.state.count === 0 ? 'rgb(240, 195, 50)' : 'rgb(79, 79, 218)',
+            backgroundColor: this.props.counter.value === 0 ? 'rgb(240, 195, 50)' : 'rgb(79, 79, 218)',
             borderRadius: 6,
             padding: 1,
             paddingBottom: 7
@@ -42,9 +30,8 @@ class Counter extends React.Component{ /* creating a component */
 
         return(
             <div>
-                <br />
                 <span style={style} className="m-4"> {this.content()} </span>
-                <button onClick={()=>this.handleAddClick()} className="btn btn-bg btn-secondary"> Increment </button>
+                <button onClick={()=>this.props.onIncrement(this.props.counter)} className="btn btn-bg btn-secondary"> Increment </button>
                 {/* Delete button emit the onDelete event when clicked and passing him the id of the concern component */}
                 <button onClick={()=>this.props.onDelete(this.props.counter.id)} className="btn btn-danger btn-bg m-2"> Delete </button>
             </div>
