@@ -27,13 +27,15 @@ class Counter extends React.Component{ /* creating a component */
     render(){
         // initialising the style function in the render function
         const style = this.style()
+        // arguments destructuring
+        const {counter, onIncrement, onDelete} = this.props
 
         return(
             <div>
                 <span style={style} className="m-4"> {this.content()} </span>
-                <button onClick={()=>this.props.onIncrement(this.props.counter)} className="btn btn-bg btn-secondary"> Increment </button>
+                <button onClick={()=>onIncrement(counter)} className="btn btn-bg btn-secondary"> Increment </button>
                 {/* Delete button emit the onDelete event when clicked and passing him the id of the concern component */}
-                <button onClick={()=>this.props.onDelete(this.props.counter.id)} className="btn btn-danger btn-bg m-2"> Delete </button>
+                <button onClick={()=>onDelete(counter.id)} className="btn btn-danger btn-bg m-2"> Delete </button>
             </div>
         )
     }
